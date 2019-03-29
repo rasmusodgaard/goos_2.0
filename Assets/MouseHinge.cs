@@ -11,7 +11,7 @@ public class MouseHinge : MonoBehaviour
     void Start()
     {
         t = transform;
-        //joint = GetComponent<DistanceJoint2D>();
+        joint = GetComponent<HingeJoint2D>();
     }
 
     // Update is called once per frame
@@ -29,7 +29,7 @@ public class MouseHinge : MonoBehaviour
              {
                  print(hit.transform.name);
                  objectHit = hit.transform;
-                 joint = objectHit.gameObject.AddComponent<HingeJoint2D>();
+                 //joint = objectHit.gameObject.AddComponent<HingeJoint2D>();
                  joint.connectedBody = objectHit.GetComponent<Rigidbody2D>();
                  joint.autoConfigureConnectedAnchor = true;
                  print(joint.connectedAnchor.x + " " + joint.connectedAnchor.y);

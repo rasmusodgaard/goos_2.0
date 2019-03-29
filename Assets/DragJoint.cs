@@ -36,6 +36,8 @@ public class DragJoint : MonoBehaviour
     private void OnMouseOver()
     {
         if(Input.GetMouseButtonDown(0)){
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
             MakeHingeJoint();
         }
     }

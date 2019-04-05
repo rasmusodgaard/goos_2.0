@@ -66,7 +66,6 @@ public class DragJoint : MonoBehaviour
 
     void GetMouseVelocity(){
         delta = mpos - lastPos;
-        print("delta: "+delta);
     }
 }
 

@@ -11,7 +11,7 @@ public class DragJoint : MonoBehaviour
 
     float forceScale = 20.0f;
 
-    public Vector3 delta = Vector3.zero;
+    Vector3 delta = Vector3.zero;
     private Vector3 lastPos = Vector3.zero;
 
     void Start()

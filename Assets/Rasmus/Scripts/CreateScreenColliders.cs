@@ -8,7 +8,7 @@ public class CreateScreenColliders : MonoBehaviour
     public float zPosition = 0f;
     private Vector2 screenSize;
     //If you need a 3D version, just remove 2D from the PhysicsMaterial2D.
-    public PhysicsMaterial2D physicsMaterial;
+    public PhysicMaterial physicsMaterial;
     void Start()
     {
         //Create a Dictionary to contain all our Objects/Transforms
@@ -29,7 +29,7 @@ public class CreateScreenColliders : MonoBehaviour
         foreach (KeyValuePair<string, Transform> valPair in colliders)
         {
             //Add our colliders. Remove the "2D", if you would like 3D colliders.
-            valPair.Value.gameObject.AddComponent<BoxCollider2D>();
+            valPair.Value.gameObject.AddComponent<BoxCollider>();
             //Set the object's name to it's "Key" name, and take on "Collider".  i.e: TopCollider
             valPair.Value.name = valPair.Key + "Collider";
             //Make the object a child of whatever object this script is on (preferably the camera)
@@ -43,7 +43,7 @@ public class CreateScreenColliders : MonoBehaviour
             //Remove the 2D from BoxCollider2D if you are working with 3D
             if (physicsMaterial)
             {
-                valPair.Value.gameObject.GetComponent<BoxCollider2D>().sharedMaterial = physicsMaterial;
+                valPair.Value.gameObject.GetComponent<BoxCollider>().sharedMaterial = physicsMaterial;
             }
         }
         //Change positions to align perfectly with outter-edge of screen, 

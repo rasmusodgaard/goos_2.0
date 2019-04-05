@@ -9,6 +9,8 @@ public class DragJoint : MonoBehaviour
     private Vector3 pos;
     private Rigidbody rb;
 
+    float forceScale = 20.0f;
+
     public Vector3 delta = Vector3.zero;
     private Vector3 lastPos = Vector3.zero;
 
@@ -16,20 +18,23 @@ public class DragJoint : MonoBehaviour
     {
         pos = gameObject.transform.position;
         rb = gameObject.GetComponent<Rigidbody>();
+        mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
 
     void Update()
     {
+        lastPos = mpos;
         mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         joint.transform.position = new Vector3(mpos.x, mpos.y, 0);
+        GetMouseVelocity();
 
         if (Input.GetMouseButtonUp(0) && gameObject.GetComponent<HingeJoint>() != null)
         {
-            AddReleaseForce(delta/10);
             BreakHingeJoint();
+            AddReleaseForce(delta);
+
         }
 
-        GetMouseVelocity();
 
     }
 
@@ -56,12 +61,12 @@ public class DragJoint : MonoBehaviour
     }
 
     void AddReleaseForce(Vector3 _delta){
-        rb.AddForce(_delta, ForceMode.Impulse);
+        rb.AddForce(_delta*forceScale, ForceMode.Impulse);
     }
 
     void GetMouseVelocity(){
-        delta = Input.mousePosition - lastPos;
-        lastPos = Input.mousePosition;
+        delta = mpos - lastPos;
+        print("delta: "+delta);
     }
 }
 

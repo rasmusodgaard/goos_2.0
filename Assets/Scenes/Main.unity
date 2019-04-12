@@ -309,7 +309,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &257867277
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1326,6 +1326,7 @@ GameObject:
   - component: {fileID: 1218194610}
   - component: {fileID: 1218194616}
   - component: {fileID: 1218194618}
+  - component: {fileID: 1218194617}
   m_Layer: 0
   m_Name: Icon
   m_TagString: Icon
@@ -1460,6 +1461,20 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 50f6a6e214f1e4d089cfa1c5fb7944f1, type: 3}
   - {fileID: 21300000, guid: 9b74ece9aed2a47a1b5f05f073335b4a, type: 3}
   - {fileID: 21300000, guid: c70f5cbcccc09498dae0330c63fcd5d6, type: 3}
+--- !u!114 &1218194617
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1218194609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4504c48c072034705bcdfa9831588569, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timer: 0
+  hitColliders: []
 --- !u!114 &1218194618
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1654,7 +1669,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1642502781
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1857,7 +1872,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1752290376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2277,7 +2292,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1892738320
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class Explosion : MonoBehaviour
         if(timer >= 1){
             hitColliders = Physics.OverlapSphere(transform.position, 10);
             for (int i = 0; i < hitColliders.Length; i++){
-                if(hitColliders[i].tag == "Icon"){
+                if(hitColliders[i].tag == "Icon" || hitColliders[i].tag == "Window") {
                     Vector3 explodeDirection = (hitColliders[i].transform.position - (transform.position+new Vector3(0,-5))).normalized;
                     hitColliders[i].GetComponent<Rigidbody>().AddForce((explodeDirection * explosionForce), ForceMode.Impulse);
                 }

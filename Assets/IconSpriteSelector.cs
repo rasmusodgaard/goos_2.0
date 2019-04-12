@@ -41,6 +41,9 @@ public class IconSpriteSelector : MonoBehaviour
     {
         mouseOver = false;
     }
-    
+
+    public int GetSpriteInt() {
+        return (int)CurrentSprite;
+    }
 
 }

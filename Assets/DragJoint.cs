@@ -33,6 +33,8 @@ public class DragJoint : MonoBehaviour
         {
             mousePositions.Enqueue(Vector3.one);
         }
+
+        joint = GameObject.FindWithTag("Joint");
     }
 
     void Update()

@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Explosion : MonoBehaviour
 {
-    public float timer = 0;
-    public Collider[] hitColliders;
-
-    void Start()
-    {
-    }
+    private float timer = 0;
+    private Collider[] hitColliders;
+    public float explosionForce = 25.0f;
 
     void Update()
     {
@@ -17,7 +14,8 @@ public class Explosion : MonoBehaviour
             hitColliders = Physics.OverlapSphere(transform.position, 10);
             for (int i = 0; i < hitColliders.Length; i++){
                 if(hitColliders[i].tag == "Icon"){
-                    hitColliders[i].GetComponent<Rigidbody>().AddForce(new Vector3(0, 25, 0), ForceMode.Impulse);
+                    Vector3 explodeDirection = (hitColliders[i].transform.position - (transform.position+new Vector3(0,-5))).normalized;
+                    hitColliders[i].GetComponent<Rigidbody>().AddForce((explodeDirection * explosionForce), ForceMode.Impulse);
                 }
             }
 

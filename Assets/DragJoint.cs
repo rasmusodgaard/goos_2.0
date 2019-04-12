@@ -13,6 +13,9 @@ public class DragJoint : MonoBehaviour
     private Queue<Vector3> mousePositions;
     private int mousePosSize = 5;
 
+    private DestroyWindow button;
+
+
     float forceScale = 20.0f;
 
     Vector3 delta = Vector3.zero;
@@ -24,6 +27,7 @@ public class DragJoint : MonoBehaviour
         rb = gameObject.GetComponent<Rigidbody>();
         mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePositions = new Queue<Vector3>();
+        button = GetComponentInChildren<DestroyWindow>();
 
         for (int i = 0; i < mousePosSize; i++)
         {
@@ -42,7 +46,7 @@ public class DragJoint : MonoBehaviour
             GetMouseVelocity();
             BreakHingeJoint();
             AddReleaseForce(delta);
-
+            button.resizing = false;
         }
     }
 
@@ -59,6 +63,8 @@ public class DragJoint : MonoBehaviour
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             MakeHingeJoint();
+            //CLICKING BUTTON?
+            ButtonRaycast();
         }
     }
 
@@ -87,5 +93,20 @@ public class DragJoint : MonoBehaviour
     {
         delta = mpos - mousePositions.Peek();
     }
+
+    void ButtonRaycast()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit))
+        {
+            if (hit.collider != GetComponent<Collider>())
+            {
+                print("CLICKING BUTTON");
+                button.resizing = true;
+            }
+        }
+    }
+
 }
 

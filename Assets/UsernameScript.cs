@@ -13,25 +13,30 @@ public class UsernameScript : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        letters.Add(other.gameObject);
+        if (other.tag == "CharSphere")
+        {
+            letters.Add(other.gameObject);
+            UpdateUsername();
+        }
+
     }
 
     private void OnTriggerExit(Collider other)
     {
-        letters.Remove(other.gameObject);
-
+        if (other.tag == "CharSphere")
+        {
+            letters.Remove(other.gameObject);
+            UpdateUsername();
+        }
     }
 
-    private void Update()
+
+    private void UpdateUsername() 
     {
-        if (Input.GetKeyDown(KeyCode.P))
+        text.text = "";
+        foreach (GameObject letter in letters)
         {
-            text.text = "";
-            foreach (GameObject letter in letters)
-            {
-                text.text += letter.GetComponentInChildren<Text>().text;
-            }
-            print(text.text);
+            text.text += letter.GetComponentInChildren<Text>().text;
         }
     }
 }

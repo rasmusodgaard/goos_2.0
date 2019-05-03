@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IconSpriteSelector : MonoBehaviour
 {
-    public enum SpriteSelector {clock,eye,info,mail,pen};
+    public enum SpriteSelector {clock,calculator,music,mail};
     public SpriteSelector CurrentSprite;
 
     [Header("Sprite Arrays")]

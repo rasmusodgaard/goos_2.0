@@ -137,19 +137,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fc902ae025d4477496ecfc5f8dfb2f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentSprite: 1
+  CurrentSprite: 3
   sprites:
   - {fileID: 21300000, guid: 9120b8e4c0e644521b68895c76c9b10d, type: 3}
-  - {fileID: 21300000, guid: 7048e96990aa343d990b1ea93822502d, type: 3}
-  - {fileID: 21300000, guid: f1960763f97184e9f81af2c399f4845a, type: 3}
+  - {fileID: 21300000, guid: 6c7acf7707b714273988115aca286149, type: 3}
+  - {fileID: 21300000, guid: c51d9930b765740f29a5d896001faf68, type: 3}
   - {fileID: 21300000, guid: 574abc1c3d5a64e3abc2ad72bcbca684, type: 3}
-  - {fileID: 21300000, guid: 1c08766bec431454385bf51f3a47ca51, type: 3}
   selSprites:
   - {fileID: 21300000, guid: d483184a437234500a10bfb14335227f, type: 3}
-  - {fileID: 21300000, guid: d2ac897d61dc84914a24418e84245391, type: 3}
-  - {fileID: 21300000, guid: 50f6a6e214f1e4d089cfa1c5fb7944f1, type: 3}
+  - {fileID: 21300000, guid: e01effa1b65914fdbb54c6748e51ae26, type: 3}
+  - {fileID: 21300000, guid: aa7dd9a5b59a44a5a8b75c0884e69251, type: 3}
   - {fileID: 21300000, guid: 9b74ece9aed2a47a1b5f05f073335b4a, type: 3}
-  - {fileID: 21300000, guid: c70f5cbcccc09498dae0330c63fcd5d6, type: 3}
 --- !u!114 &3502715703059482472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -163,8 +161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windowPrefab:
-  - {fileID: 6994059433982686908, guid: 0ff6d8f7a26db4e29baa6344ec923479, type: 3}
-  - {fileID: 6994059433982686908, guid: 0ff6d8f7a26db4e29baa6344ec923479, type: 3}
+  - {fileID: 1403467736110044290, guid: f1ef5702bc7334b32a356cccd521cc59, type: 3}
   - {fileID: 6994059433982686908, guid: 0ff6d8f7a26db4e29baa6344ec923479, type: 3}
   - {fileID: 6994059433982686908, guid: 0ff6d8f7a26db4e29baa6344ec923479, type: 3}
   - {fileID: 6994059433982686908, guid: 0ff6d8f7a26db4e29baa6344ec923479, type: 3}

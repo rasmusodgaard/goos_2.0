@@ -9,6 +9,8 @@ TagManager:
   - Background
   - Joint
   - BorderLeft
+  - CharSphere
+  - CloseButton
   layers:
   - Default
   - TransparentFX

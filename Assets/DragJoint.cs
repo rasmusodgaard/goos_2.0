@@ -48,7 +48,9 @@ public class DragJoint : MonoBehaviour
             GetMouseVelocity();
             BreakHingeJoint();
             AddReleaseForce(delta);
-            button.resizing = false;
+
+            if(button != null)
+                button.resizing = false;
         }
     }
 
@@ -102,7 +104,7 @@ public class DragJoint : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider != GetComponent<Collider>())
+            if (hit.collider.tag == "CloseButton")
             {
                 print("CLICKING BUTTON");
                 button.resizing = true;

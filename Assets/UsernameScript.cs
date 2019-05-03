@@ -26,10 +26,12 @@ public class UsernameScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
+            text.text = "";
             foreach (GameObject letter in letters)
             {
-                print(letter.GetComponentInChildren<Text>().text);
+                text.text += letter.GetComponentInChildren<Text>().text;
             }
+            print(text.text);
         }
     }
 }

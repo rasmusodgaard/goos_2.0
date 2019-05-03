@@ -11,6 +11,8 @@ TagManager:
   - BorderLeft
   - CharSphere
   - CloseButton
+  - CharSphere
+  - Sand
   layers:
   - Default
   - TransparentFX

@@ -8,28 +8,26 @@ public class Explosion : MonoBehaviour
     private Collider[] hitColliders;
     public float explosionForce = 25.0f;
 
+    private DestroyWindow button;
+    private Vector3 defaultSize;
 
-    /*void Update()
+    private void Start()
     {
-        if(timer >= 1){
-            hitColliders = Physics.OverlapSphere(transform.position, 10);
-            for (int i = 0; i < hitColliders.Length; i++){
-                if(hitColliders[i].tag == "Icon" || hitColliders[i].tag == "Window") {
-                    Vector3 explodeDirection = (hitColliders[i].transform.position - (transform.position+new Vector3(0,-5))).normalized;
-                    hitColliders[i].GetComponent<Rigidbody>().AddForce((explodeDirection * explosionForce), ForceMode.Impulse);
-                }
-            }
-
-            Destroy(gameObject);
-        }
+        button = GetComponentInChildren<DestroyWindow>();
+        defaultSize = transform.localScale;
     }
 
-    private void OnMouseOver()
+    public void Update()
     {
-        if(Input.GetMouseButton(0)){
-            timer += Time.deltaTime;
+        float resizingScale = (button.xSize - 0.15f) / 350;
+        if(button.resizing){
+            transform.localScale = new Vector3(transform.localScale.x + resizingScale, transform.localScale.y + resizingScale, 1);
         }
-    }*/
+        if(!button.resizing && transform.localScale.x > defaultSize.x){
+            transform.localScale = new Vector3(transform.localScale.x - resizingScale, transform.localScale.y - resizingScale, 1);
+        }
+
+    }
 
     public void Explode()
     {

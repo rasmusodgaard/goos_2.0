@@ -14,11 +14,13 @@ public class DestroyWindow : MonoBehaviour
     public bool resizing = false;
 
     private Transform parent;
+    private Vector3 windowDefaultSize;
 
     private void Start()
     {
         parent = transform.parent.GetComponent<Transform>();
         xSize = parent.localScale.x;
+        windowDefaultSize = parent.parent.localScale;
     }
 
     void Update()
@@ -31,7 +33,7 @@ public class DestroyWindow : MonoBehaviour
 
         parent.localScale = new Vector3(xSize, parent.localScale.y, parent.localScale.z);
 
-        if(xSize > maxSize - 0.001){
+        if(xSize > maxSize - 0.004f){
             transform.parent.parent.GetComponent<Explosion>().Explode();
         }
 

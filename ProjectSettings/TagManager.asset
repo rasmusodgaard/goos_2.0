@@ -13,6 +13,7 @@ TagManager:
   - CloseButton
   - CharSphere
   - Sand
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

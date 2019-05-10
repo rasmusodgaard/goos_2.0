@@ -14,6 +14,8 @@ TagManager:
   - CharSphere
   - Sand
   - MusicPlayer
+  - VolumeSlider
+  - MusicPlayer
   layers:
   - Default
   - TransparentFX

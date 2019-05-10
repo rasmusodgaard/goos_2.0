@@ -35,6 +35,8 @@ public class DoubleClick : MonoBehaviour
     }
 
     void InstantiateWindow(int sprite){
-        Instantiate(windowPrefab[currentSprite], new Vector3(0, 20, 0), Quaternion.identity);
+        if(GameObject.Find(windowPrefab[currentSprite].name + "(Clone)") == null){
+            Instantiate(windowPrefab[currentSprite], new Vector3(0, 20, 0), Quaternion.identity);
+        }
     }
 }

@@ -41,7 +41,7 @@ public class CursorSprite : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.tag == "Icon" || hit.collider.tag == "Window") { over = true; }
+            if (hit.collider.tag == "Icon" || hit.collider.tag == "Window" || hit.collider.tag == "VolumeSlider") { over = true; }
             else if(over && hit.collider.tag == "Background" && !holding){
                 over = false;
             }

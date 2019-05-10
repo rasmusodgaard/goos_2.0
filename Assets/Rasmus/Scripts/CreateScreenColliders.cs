@@ -36,7 +36,7 @@ public class CreateScreenColliders : MonoBehaviour
             valPair.Value.parent = transform;
             //Scale the object to the width and height of the screen, using the world-space values calculated earlier
             if (valPair.Key == "Left" || valPair.Key == "Right")
-                valPair.Value.localScale = new Vector3(colThickness, screenSize.y * 20, colThickness);
+                valPair.Value.localScale = new Vector3(colThickness, screenSize.y * 200, colThickness);
             else
                 valPair.Value.localScale = new Vector3(screenSize.x * 2, colThickness, colThickness);
             //We add the Physicsmaterial to the collider here if there is any
@@ -52,7 +52,7 @@ public class CreateScreenColliders : MonoBehaviour
         //as well as add/subtracting half out objects size so it's not just half way off-screen
         colliders["Right"].position = new Vector3(cameraPos.x + screenSize.x + (colliders["Right"].localScale.x * 0.5f), cameraPos.y, zPosition);
         colliders["Left"].position = new Vector3(cameraPos.x - screenSize.x - (colliders["Left"].localScale.x * 0.5f), cameraPos.y, zPosition);
-        colliders["Top"].position = new Vector3(cameraPos.x, cameraPos.y + screenSize.y * 9.6f + (colliders["Top"].localScale.y * 0.5f), zPosition);
+        colliders["Top"].position = new Vector3(cameraPos.x, cameraPos.y + screenSize.y * 99.6f + (colliders["Top"].localScale.y * 0.5f), zPosition);
         colliders["Bottom"].position = new Vector3(cameraPos.x, cameraPos.y - screenSize.y - (colliders["Bottom"].localScale.y * 0.5f), zPosition);
         //colliders["Top"].gameObject.SetActive(false);
     }

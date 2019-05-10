@@ -4,31 +4,34 @@ using UnityEngine;
 
 public class ClearScreen : MonoBehaviour
 {
+    Transform leftCollider, rightCollider;
+
 
     public bool moving = false;
+    private bool changeScene;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        changeScene = false;
+        leftCollider = GameObject.FindWithTag("BorderLeft").transform;
+        rightCollider = GameObject.FindWithTag("BorderRight").transform;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            moving = true;
-            print("SPace pressed");
-        }
-
-        if (moving)
+        if (moving && !changeScene)
         {
             gameObject.transform.Translate(Vector3.down * Time.deltaTime);
-
+        }
+        if (rightCollider.position.x < leftCollider.position.x && !changeScene)
+        {
+            changeScene = true;
+            GameManager.instance.NextScene();
         }
     }
 
- 
-
+    public void StartClearScreen() 
+    {
+        moving = true;
+    }
 }

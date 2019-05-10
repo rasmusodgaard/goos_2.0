@@ -16,6 +16,9 @@ TagManager:
   - MusicPlayer
   - VolumeSlider
   - MusicPlayer
+  - BorderRight
+  - Username
+  - ScreenCol
   layers:
   - Default
   - TransparentFX

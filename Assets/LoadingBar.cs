@@ -7,14 +7,22 @@ public class LoadingBar : MonoBehaviour
 
     public HourClassCounter HGC;
 
+    private bool changeScene;
+
     void Start()
     {
         HGC = FindObjectOfType<HourClassCounter>();
+        changeScene = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (transform.localScale.x >= 18 && !changeScene)
+        {
+            GameManager.instance.NextScene();
+            changeScene = false;
+        }
     }
 
     public void Grow()

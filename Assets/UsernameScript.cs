@@ -7,13 +7,16 @@ public class UsernameScript : MonoBehaviour
 {
 
     public Text text;
-
     public List<GameObject> letters;
 
+    private bool locked;
+    private string username;
+
+    private void Start() { locked = false; }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "CharSphere")
+        if (other.tag == "CharSphere" && !locked)
         {
             letters.Add(other.gameObject);
             UpdateUsername();
@@ -23,7 +26,7 @@ public class UsernameScript : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "CharSphere")
+        if (other.tag == "CharSphere" && !locked)
         {
             letters.Remove(other.gameObject);
             UpdateUsername();
@@ -34,9 +37,17 @@ public class UsernameScript : MonoBehaviour
     private void UpdateUsername() 
     {
         text.text = "";
+        username = "";
         foreach (GameObject letter in letters)
         {
             text.text += letter.GetComponentInChildren<Text>().text;
+            username = text.text;
         }
+    }
+
+    public string ReturnAndLockUsername() 
+    {
+        locked = true;
+        return username;
     }
 }

@@ -11,6 +11,8 @@ public class Explosion : MonoBehaviour
     private DestroyWindow button;
     private Vector3 defaultSize;
 
+    public GameObject ExplodeEffect;
+
     private void Start()
     {
         button = GetComponentInChildren<DestroyWindow>();
@@ -40,7 +42,8 @@ public class Explosion : MonoBehaviour
                 hitColliders[i].GetComponent<Rigidbody>().AddForce((explodeDirection * explosionForce), ForceMode.Impulse);
             }
         }
-
+        GameObject Effect = (GameObject)Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
+        Destroy(Effect, 2f);
         Destroy(gameObject);
     }
 }

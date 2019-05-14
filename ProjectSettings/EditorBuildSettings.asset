@@ -8,9 +8,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LogIn.unity
     guid: bce86cc1482269e4f8f3f8a86e6f1d9e
+  - enabled: 0
+    path: Assets/Nikolaj/HourGlass.unity
+    guid: f424156d2fe850c4290f256bb25fe89b
   - enabled: 1
     path: Assets/Scenes/HourGlass.unity
-    guid: f424156d2fe850c4290f256bb25fe89b
+    guid: 30bea2875c41a4cb7b12dccce8692a25
   - enabled: 1
     path: Assets/Scenes/Main.unity
     guid: 9b6100564d6ad4701a718351ee54849d

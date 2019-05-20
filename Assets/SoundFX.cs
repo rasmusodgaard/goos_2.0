@@ -58,7 +58,7 @@ public class SoundFX : MonoBehaviour
     {
         audioSources[3].loop = false;
         audioSources[3].pitch = Random.Range(0.9f, 1.1f);
-        audioSources[3].clip = fuse;
+        audioSources[3].clip = explosion;
         audioSources[3].volume = 1;
         audioSources[3].Play();
     }

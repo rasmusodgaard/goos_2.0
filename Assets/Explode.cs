@@ -16,14 +16,6 @@ public class Explode : MonoBehaviour
 
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-     
-
-    }
-
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -32,6 +24,7 @@ public class Explode : MonoBehaviour
             print("bevæg");
             if (collision.gameObject.CompareTag("BorderLeft"))
             {
+                GameManager.instance.GetComponent<SoundFX>().playExplosion();
                 print("dø");
                 GameObject Effect = (GameObject)Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
                 Destroy(this.gameObject);

@@ -50,4 +50,6 @@ public class UsernameScript : MonoBehaviour
         locked = true;
         return username;
     }
+
+    public string GetUsername() { return username; }
 }

@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         username = "";
+        StartCoroutine(playIntro());
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -79,6 +80,13 @@ public class GameManager : MonoBehaviour
 
         yield return new WaitForSeconds(5);
         Application.Quit();
+    }
+
+    IEnumerator playIntro()
+    {
+
+        yield return new WaitForSeconds(2);
+        GetComponent<SoundFX>().playIntro();
     }
 
 }

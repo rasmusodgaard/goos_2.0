@@ -18,9 +18,17 @@ public class quitClick : MonoBehaviour
             {
                 clicked = 0;
                 clicktime = 0;
+                GameManager.instance.GetComponent<SoundFX>().playClick();
+                StartCoroutine(endSound());
                 GameManager.instance.Quit();
 
             }
         }
+    }
+
+    IEnumerator endSound() 
+    {
+        yield return new WaitForSeconds(1.5f);
+        GameManager.instance.GetComponent<SoundFX>().playOutro();
     }
 }

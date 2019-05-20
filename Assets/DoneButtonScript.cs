@@ -27,6 +27,7 @@ public class DoneButtonScript : MonoBehaviour
 
             if (clicked > 1 && Time.time - clicktime < clickdelay)
             {
+                GameManager.instance.GetComponent<SoundFX>().playClick();
                 clicked = 0;
                 clicktime = 0;
                 InitiateDone();

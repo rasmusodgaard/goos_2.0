@@ -30,6 +30,7 @@ public class DoubleClick : MonoBehaviour
                 clicktime = 0;
                 Debug.Log(gameObject.name + " DOUBLE CLICKED");
                 if(offButton == false) {
+                    GameManager.instance.GetComponent<SoundFX>().playClick();
                     InstantiateWindow(currentSprite);
                 } else { 
                     //to game manager coroutine

@@ -15,7 +15,10 @@ public class HourClassCounter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.anyKey)
+        {
+            loadingScore += 0.2f;
+        }
     }
 
 

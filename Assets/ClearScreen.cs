@@ -25,6 +25,7 @@ public class ClearScreen : MonoBehaviour
         }
         if (rightCollider.position.x < leftCollider.position.x && !changeScene)
         {
+            print("Changescene");
             changeScene = true;
             GameManager.instance.NextScene();
         }

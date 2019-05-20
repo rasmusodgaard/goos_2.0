@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class LoadingBar : MonoBehaviour
 {
-
+    public ClearScreen cs;
     public HourClassCounter HGC;
 
     private bool changeScene;
 
     void Start()
     {
+        cs = FindObjectOfType<ClearScreen>();
         HGC = FindObjectOfType<HourClassCounter>();
         changeScene = false;
     }
@@ -20,7 +21,8 @@ public class LoadingBar : MonoBehaviour
     {
         if (transform.localScale.x >= 18 && !changeScene)
         {
-            GameManager.instance.NextScene();
+            //GameManager.instance.NextScene();
+            cs.moving = true;
             changeScene = false;
         }
     }

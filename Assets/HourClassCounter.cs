@@ -12,16 +12,6 @@ public class HourClassCounter : MonoBehaviour
         LB = FindObjectOfType<LoadingBar>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.anyKey)
-        {
-            loadingScore += 0.2f;
-        }
-    }
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Sand")

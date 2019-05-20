@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class CreateScreenColliders : MonoBehaviour
 {
-
+    Transform leftSide;
     public float colThickness = 2f;
     public float zPosition = 0f;
     private Vector2 screenSize;
@@ -11,6 +13,10 @@ public class CreateScreenColliders : MonoBehaviour
     public PhysicMaterial physicsMaterial;
     void Start()
     {
+        if (SceneManager.GetActiveScene().name != "Main")
+        {
+            leftSide = GameObject.FindWithTag("BorderLeft").transform;
+        }
         //Create a Dictionary to contain all our Objects/Transforms
         System.Collections.Generic.Dictionary<string, Transform> colliders = new System.Collections.Generic.Dictionary<string, Transform>();
         //Create our GameObjects and add their Transform components to the Dictionary we created above
@@ -55,5 +61,11 @@ public class CreateScreenColliders : MonoBehaviour
         colliders["Top"].position = new Vector3(cameraPos.x, cameraPos.y + screenSize.y * 99.6f + (colliders["Top"].localScale.y * 0.5f), zPosition);
         colliders["Bottom"].position = new Vector3(cameraPos.x, cameraPos.y - screenSize.y - (colliders["Bottom"].localScale.y * 0.5f), zPosition);
         //colliders["Top"].gameObject.SetActive(false);
+        if (leftSide != null)
+        {
+            print("lefty");
+            leftSide.position = new Vector3(colliders["Left"].position.x + (colThickness/2) - (leftSide.localScale.y/2) + 0.1f,leftSide.position.y, leftSide.position.z);
+
+        }
     }
 }

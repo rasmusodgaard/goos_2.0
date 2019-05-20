@@ -10,6 +10,6 @@ public class LoadUsername : MonoBehaviour
     {
         //GetComponent<Text>().text = GameManager.instance.GetComponent<UsernameScript>().GetUsername();
         username = GetComponent<Text>();
-        username.text = GameManager.instance.GetComponent<UsernameScript>().GetUsername();
+        username.text = GameManager.instance.GetUserName();
     }
 }

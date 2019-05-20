@@ -24,9 +24,9 @@ public class Explode : MonoBehaviour
             print("bevæg");
             if (collision.gameObject.CompareTag("BorderLeft"))
             {
-                GameManager.instance.GetComponent<SoundFX>().playExplosion();
                 print("dø");
                 GameObject Effect = (GameObject)Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
+                GameManager.instance.GetComponent<SoundFX>().playExplosion();
                 Destroy(this.gameObject);
                 Destroy(Effect, 2f);
             }

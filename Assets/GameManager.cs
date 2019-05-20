@@ -58,10 +58,10 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.N))
-        {
-            NextScene();
-        }
+        //if (Input.GetKeyDown(KeyCode.N))
+        //{
+        //    NextScene();
+        //}
     }
 
     public void Quit()
@@ -88,5 +88,7 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(2);
         GetComponent<SoundFX>().playIntro();
     }
+
+    public string GetUserName() { return username; }
 
 }

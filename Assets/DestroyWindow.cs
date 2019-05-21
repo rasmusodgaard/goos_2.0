@@ -47,7 +47,8 @@ public class DestroyWindow : MonoBehaviour
 
     void ResizeUp(){
         if(!isplaying) 
-        { 
+        {
+            print("By sound");
             GameManager.instance.GetComponent<SoundFX>().playFuse();
             isplaying = true;    
         }

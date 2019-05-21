@@ -64,7 +64,7 @@ public class CreateScreenColliders : MonoBehaviour
         if (leftSide != null)
         {
             print("lefty");
-            leftSide.position = new Vector3(colliders["Left"].position.x + (colThickness/2) - (leftSide.localScale.y/2) + 0.1f,leftSide.position.y, leftSide.position.z);
+            leftSide.position = new Vector3(colliders["Left"].position.x + (colThickness/2) - (leftSide.localScale.y/2),leftSide.position.y, leftSide.position.z);
 
         }
     }

@@ -29,10 +29,7 @@ public class LoadingBar : MonoBehaviour
 
     public void Grow()
     {
-
         transform.localScale += new Vector3(HGC.loadingScore, 0f, 0f);
-
-
     }
 
 }

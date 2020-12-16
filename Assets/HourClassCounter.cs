@@ -7,6 +7,9 @@ public class HourClassCounter : MonoBehaviour
 
     public float loadingScore;
     public LoadingBar LB;
+    public float speed = 2;
+
+
     void Start()
     {
         LB = FindObjectOfType<LoadingBar>();
@@ -16,13 +19,12 @@ public class HourClassCounter : MonoBehaviour
     {
         if (other.gameObject.tag == "Sand")
         {
-            loadingScore += 0.002f;
+            loadingScore += 0.002f * speed;
             LB.Grow();
-
         }
     }
 
 
-        
+
 
 }

@@ -34,7 +34,7 @@ public class UsernameScript : MonoBehaviour
     }
 
 
-    private void UpdateUsername() 
+    private void UpdateUsername()
     {
         text.text = "";
         username = "";
@@ -45,11 +45,16 @@ public class UsernameScript : MonoBehaviour
         }
     }
 
-    public string ReturnAndLockUsername() 
+    public string ReturnAndLockUsername()
     {
         locked = true;
         return username;
     }
 
     public string GetUsername() { return username; }
+
+    public int GetLettersLength()
+    {
+        return letters.Count;
+    }
 }

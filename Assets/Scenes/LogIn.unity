@@ -15713,11 +15713,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1985158443}
-    - target: {fileID: 6977532503521530953, guid: f9599a86e4c1f9d4f968668676037a4f,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4889096619552300372, guid: f9599a86e4c1f9d4f968668676037a4f,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -15732,6 +15727,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Drag
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6977532503521530953, guid: f9599a86e4c1f9d4f968668676037a4f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
@@ -18798,10 +18798,6 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1985158443}
-    - target: {fileID: 1465671598, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
-      propertyPath: clearingScreen
-      value: 
-      objectReference: {fileID: 106382620}
     - target: {fileID: 4889096619552300372, guid: f9599a86e4c1f9d4f968668676037a4f,
         type: 3}
       propertyPath: m_CollisionDetection
@@ -18817,6 +18813,10 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 1465671598, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
+      propertyPath: clearingScreen
+      value: 
+      objectReference: {fileID: 106382620}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
 --- !u!4 &1764489385 stripped
@@ -22678,6 +22678,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1055367634, guid: 5d7f940e791664aa6aeaf25a6298e67f, type: 3}
+      propertyPath: button_ok
+      value: 
+      objectReference: {fileID: 8300000, guid: 2ec570a62144b98429b691c700e18bbe, type: 3}
+    - target: {fileID: 1055367634, guid: 5d7f940e791664aa6aeaf25a6298e67f, type: 3}
+      propertyPath: button_denied
+      value: 
+      objectReference: {fileID: 8300000, guid: 7b8602fb0fe1a05418beb504b7a49d45, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d7f940e791664aa6aeaf25a6298e67f, type: 3}
 --- !u!1001 &4889096618848123151

@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ClearScreen : MonoBehaviour
 {
+    public float speed = 2;
+
     Transform leftCollider, rightCollider;
-
-
     public bool moving = false;
     private bool changeScene;
 
@@ -21,7 +21,7 @@ public class ClearScreen : MonoBehaviour
     {
         if (moving && !changeScene)
         {
-            gameObject.transform.Translate(Vector3.down * Time.deltaTime);
+            gameObject.transform.Translate(Vector3.down * Time.deltaTime * speed);
         }
         if (rightCollider.position.x < leftCollider.position.x && !changeScene)
         {
@@ -31,7 +31,7 @@ public class ClearScreen : MonoBehaviour
         }
     }
 
-    public void StartClearScreen() 
+    public void StartClearScreen()
     {
         moving = true;
     }

@@ -49,7 +49,7 @@ public class DragJoint : MonoBehaviour
             BreakHingeJoint();
             AddReleaseForce(delta);
 
-            if(button != null)
+            if (button != null)
                 button.resizing = false;
         }
     }
@@ -64,6 +64,17 @@ public class DragJoint : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
+            {
+                print("Hit: " + hit.collider.name);
+                if (hit.collider.transform.gameObject.layer == LayerMask.NameToLayer("CollisionExcluder"))
+                {
+                    print("Should return");
+                    return;
+                }
+            }
             rb.velocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
             MakeHingeJoint();

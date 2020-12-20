@@ -7,13 +7,38 @@ using DG.Tweening;
 
 public class LoadingAnimation_Script : MonoBehaviour
 {
-    TextMeshProUGUI text;
-    Public Ease ease;
+    public Ease ease;
+    public float speed = 5;
+    public string textFinal = "Loading";
 
-    void Start()
+    private int numberOfEases;
+    private TextMeshProUGUI text;
+
+    private void Start()
     {
+        print("DEbug: " +  (int)Ease.INTERNAL_Custom);
+        //print(""+System.Runtime.InteropServices.FrameworkDescription);
+        numberOfEases = Ease.GetNames(typeof(Ease)).Length;
         text = GetComponent<TextMeshProUGUI>();
-        text.DOText("Loading...",5).SetEase(ease).SetLoops(-1);
+
+        SetNewLoadingAnimation();
+    }
+
+    private void SetNewLoadingAnimation()
+    {
+        text.text = "";
+        text.DOText(textFinal ,speed)
+                    .SetEase(SetRandomEaseFunction())
+                    .OnComplete(()=>SetNewLoadingAnimation());
+    }
+
+    private Ease SetRandomEaseFunction()
+    {
+        Ease output;
+        int rand = Random.Range(1,numberOfEases-2);
+        output = (Ease)rand;
+        print("New ease is: " + output);
+        return output; 
     }
 
 

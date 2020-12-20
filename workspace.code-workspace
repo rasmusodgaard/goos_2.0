@@ -5,5 +5,7 @@
     }
   ],
   "settings": {
+    "editor.snippetSuggestions": "top",
+    "emmet.showSuggestionsAsSnippets": true
   }
 }

@@ -29,6 +29,7 @@ public class LoadingAnimation_Script : MonoBehaviour
         text.text = "";
         text.DOText(textFinal ,speed)
                     .SetEase(SetRandomEaseFunction())
+                    .SetLoops(2,LoopType.Yoyo)
                     .OnComplete(()=>SetNewLoadingAnimation());
     }
 

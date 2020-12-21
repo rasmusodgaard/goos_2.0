@@ -19,10 +19,8 @@ public class Explode : MonoBehaviour
     {
         if (clearingScreen.moving)
         {
-            print("bevæg");
             if (collision.gameObject.CompareTag("BorderLeft"))
             {
-                print("dø");
                 GameObject Effect = (GameObject)Instantiate(ExplodeEffect, transform.position, Quaternion.identity);
                 GameManager.instance.GetComponent<SoundFX>().playExplosion();
                 Destroy(this.gameObject);

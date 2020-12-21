@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
 
     // Private
     private string currentScene;
+    private int lastSceneIndex;
 
     private void OnEnable()
     {
@@ -34,6 +35,8 @@ public class GameManager : MonoBehaviour
     {
         username = "";
         StartCoroutine(playIntro());
+        lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
+        print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -44,16 +47,18 @@ public class GameManager : MonoBehaviour
 
     public void NextScene() 
     {
-        print("Current scene: " + currentScene);
-        if (currentScene.Equals("LogIn"))
+        print("Now changing scene...");
+        print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
+        int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
+        if (currentSceneIndex >= lastSceneIndex)
         {
-            SceneManager.LoadScene("HourGlass");
-        } 
-
-        else if (currentScene.Equals("HourGlass"))
-        {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene(0);
         }
+        else
+        {
+            SceneManager.LoadScene(++currentSceneIndex);
+        }
+
     }
 
     private void Update()
@@ -79,7 +84,8 @@ public class GameManager : MonoBehaviour
     {
 
         yield return new WaitForSeconds(5);
-        Application.Quit();
+        //Application.Quit();
+        NextScene();
     }
 
     IEnumerator playIntro()

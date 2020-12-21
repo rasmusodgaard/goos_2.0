@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
-
+using UnityEngine.SceneManagement;
+using System;
 
 public class LoadingAnimation_Script : MonoBehaviour
 {
@@ -16,12 +17,21 @@ public class LoadingAnimation_Script : MonoBehaviour
 
     private void Start()
     {
-        print("DEbug: " +  (int)Ease.INTERNAL_Custom);
+        //PrintSceneNames();
         //print(""+System.Runtime.InteropServices.FrameworkDescription);
         numberOfEases = Ease.GetNames(typeof(Ease)).Length;
         text = GetComponent<TextMeshProUGUI>();
 
         SetNewLoadingAnimation();
+    }
+
+    private void PrintSceneNames()
+    {
+        print("Scenes in the build index:");
+        for (int i = 0; i < SceneManager.sceneCountInBuildSettings; i++)
+        {
+            print(SceneManager.GetSceneByBuildIndex(i).name);
+        }
     }
 
     private void SetNewLoadingAnimation()
@@ -36,9 +46,8 @@ public class LoadingAnimation_Script : MonoBehaviour
     private Ease SetRandomEaseFunction()
     {
         Ease output;
-        int rand = Random.Range(1,numberOfEases-2);
+        int rand = UnityEngine.Random.Range(1,numberOfEases-2);
         output = (Ease)rand;
-        print("New ease is: " + output);
         return output; 
     }
 

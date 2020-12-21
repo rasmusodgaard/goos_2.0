@@ -13,7 +13,7 @@ public class CreateScreenColliders : MonoBehaviour
     public PhysicMaterial physicsMaterial;
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "Main")
+        if (SceneManager.GetActiveScene().name != "Desktop")
         {
             leftSide = GameObject.FindWithTag("BorderLeft").transform;
         }
@@ -63,7 +63,7 @@ public class CreateScreenColliders : MonoBehaviour
         //colliders["Top"].gameObject.SetActive(false);
         if (leftSide != null)
         {
-            print("lefty");
+
             leftSide.position = new Vector3(colliders["Left"].position.x + (colThickness/2) - (leftSide.localScale.y/2),leftSide.position.y, leftSide.position.z);
 
         }

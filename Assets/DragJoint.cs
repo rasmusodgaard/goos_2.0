@@ -68,7 +68,6 @@ public class DragJoint : MonoBehaviour
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                print("Hit: " + hit.collider.name);
                 if (hit.collider.transform.gameObject.layer == LayerMask.NameToLayer("CollisionExcluder"))
                 {
                     print("Should return");

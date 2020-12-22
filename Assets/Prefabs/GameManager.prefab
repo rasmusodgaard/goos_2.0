@@ -450,3 +450,5 @@ MonoBehaviour:
   outro: {fileID: 8300000, guid: 9521a83fad5954c2a996045107c94185, type: 3}
   fuse: {fileID: 8300000, guid: 4bfe61a6058df46f4a365443a8b14c4c, type: 3}
   explosion: {fileID: 8300000, guid: b47734a6febda4f18b924ad4062a13d1, type: 3}
+  button_ok: {fileID: 8300000, guid: 2ec570a62144b98429b691c700e18bbe, type: 3}
+  button_denied: {fileID: 8300000, guid: 7b8602fb0fe1a05418beb504b7a49d45, type: 3}

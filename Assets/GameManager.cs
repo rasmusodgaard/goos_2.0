@@ -34,7 +34,10 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         username = "";
-        StartCoroutine(playIntro());
+        if (currentScene == "Desktop")
+        {
+            StartCoroutine(playIntro());
+        }
         lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
     }
@@ -45,7 +48,7 @@ public class GameManager : MonoBehaviour
     }
 
 
-    public void NextScene() 
+    public void NextScene()
     {
         print("Now changing scene...");
         print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
@@ -75,12 +78,12 @@ public class GameManager : MonoBehaviour
         StartCoroutine(waitForEmptyScreen());
     }
 
-    public void addUsername(string input) 
+    public void addUsername(string input)
     {
         username = input;
     }
 
-    IEnumerator waitForEmptyScreen() 
+    IEnumerator waitForEmptyScreen()
     {
 
         yield return new WaitForSeconds(5);

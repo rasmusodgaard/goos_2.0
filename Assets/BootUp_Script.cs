@@ -69,7 +69,7 @@ public class BootUp_Script : MonoBehaviour
             image.sprite = shutterSprite;
             output[i] = go.GetComponent<RectTransform>();
 
-
+            //TODO: position shutters correctly around the screen and 
             ScaleRectToScreen(output[i], 1, 1);
         }
 

@@ -20,11 +20,11 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-        if (instance == null)
+        if(instance == null)
         {
             instance = this;
         }
-        else if (instance != this)
+        else if(instance != this)
         {
             Destroy(this);
         }
@@ -34,17 +34,19 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         username = "";
-        if (currentScene == "Desktop")
-        {
-            StartCoroutine(playIntro());
-        }
+
         lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
         print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        print("OnSceneLoaded: " + scene.name);
         currentScene = scene.name;
+        if(currentScene == "Desktop")
+        {
+            StartCoroutine(playIntro());
+        }
     }
 
 
@@ -53,7 +55,7 @@ public class GameManager : MonoBehaviour
         print("Now changing scene...");
         print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (currentSceneIndex >= lastSceneIndex)
+        if(currentSceneIndex >= lastSceneIndex)
         {
             SceneManager.LoadScene(0);
         }
@@ -83,6 +85,17 @@ public class GameManager : MonoBehaviour
         username = input;
     }
 
+    public void TimedQuit(float duration)
+    {
+        StartCoroutine(TimedQuitCoroutine(duration));
+    }
+
+    IEnumerator TimedQuitCoroutine(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        NextScene();
+    }
+
     IEnumerator waitForEmptyScreen()
     {
 
@@ -98,6 +111,9 @@ public class GameManager : MonoBehaviour
         GetComponent<SoundFX>().playIntro();
     }
 
-    public string GetUserName() { return username; }
+    public string GetUserName()
+    {
+        return username;
+    }
 
 }

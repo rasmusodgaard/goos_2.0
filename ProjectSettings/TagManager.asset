@@ -19,6 +19,7 @@ TagManager:
   - BorderRight
   - Username
   - ScreenCol
+  - Hourglass
   layers:
   - Default
   - TransparentFX

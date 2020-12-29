@@ -21,6 +21,7 @@ public class DragJoint : MonoBehaviour
     Vector3 delta = Vector3.zero;
     private Vector3 lastPos = Vector3.zero;
 
+
     void Start()
     {
         pos = gameObject.transform.position;
@@ -29,7 +30,7 @@ public class DragJoint : MonoBehaviour
         mousePositions = new Queue<Vector3>();
         button = GetComponentInChildren<DestroyWindow>();
 
-        for (int i = 0; i < mousePosSize; i++)
+        for(int i = 0; i < mousePosSize; i++)
         {
             mousePositions.Enqueue(Vector3.one);
         }
@@ -43,13 +44,13 @@ public class DragJoint : MonoBehaviour
         UpdatePositions();
         joint.transform.position = new Vector3(mpos.x, mpos.y, 0);
 
-        if (Input.GetMouseButtonUp(0) && gameObject.GetComponent<HingeJoint>() != null)
+        if(Input.GetMouseButtonUp(0) && gameObject.GetComponent<HingeJoint>() != null)
         {
             GetMouseVelocity();
             BreakHingeJoint();
             AddReleaseForce(delta);
 
-            if (button != null)
+            if(button != null)
                 button.resizing = false;
         }
     }
@@ -62,15 +63,14 @@ public class DragJoint : MonoBehaviour
 
     private void OnMouseOver()
     {
-        if (Input.GetMouseButtonDown(0))
+        if(Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-            if (Physics.Raycast(ray, out hit))
+            if(Physics.Raycast(ray, out hit))
             {
-                if (hit.collider.transform.gameObject.layer == LayerMask.NameToLayer("CollisionExcluder"))
+                if(hit.collider.transform.gameObject.layer == LayerMask.NameToLayer("CollisionExcluder"))
                 {
-                    print("Should return");
                     return;
                 }
             }
@@ -90,8 +90,9 @@ public class DragJoint : MonoBehaviour
 
     void BreakHingeJoint()
     {
-        if (gameObject.GetComponent<HingeJoint>() != null)
+        if(gameObject.GetComponent<HingeJoint>() != null)
         {
+            print("Break joint!");
             gameObject.GetComponent<HingeJoint>().breakForce = 0;
             gameObject.GetComponent<HingeJoint>().breakTorque = 0;
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0.0000001f, 0));
@@ -112,9 +113,9 @@ public class DragJoint : MonoBehaviour
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.tag == "CloseButton")
+            if(hit.collider.tag == "CloseButton")
             {
                 print("CLICKING BUTTON");
                 button.resizing = true;

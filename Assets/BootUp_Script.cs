@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.Serialization;
+using Sirenix.OdinInspector;
 using UnityEngine.UI;
 
 public class BootUp_Script : MonoBehaviour
@@ -11,6 +12,8 @@ public class BootUp_Script : MonoBehaviour
     ParticleSystem particle;
     Transform canvasTransform;
     Camera cam;
+    RectTransform[] shutters;
+    Vector2[] clockwise;
 
     [Header("Values after pressed")]
     public float particleSpeed = 10;
@@ -27,6 +30,9 @@ public class BootUp_Script : MonoBehaviour
         particle = GetComponentInChildren<ParticleSystem>();
         canvasTransform = GetComponentInChildren<Canvas>().transform;
         cam = Camera.main;
+        clockwise = new Vector2[]{
+            Vector2.up, Vector2.right, Vector2.down, Vector2.left
+        };
     }
     public void BootUp()
     {
@@ -46,16 +52,17 @@ public class BootUp_Script : MonoBehaviour
         colorOverLifetime.color = pressedGradient;
 
         //  -CRT simulation
-        RectTransform[] shutters = CreateCRTShutters();
+        //shutters = CreateCRTShutters();
         //      -Horisontal cover to 1%
         //      -Vertical covers to 1%
         //      -Noget med blur/glow
+        GameManager.instance.TimedQuit(5);
     }
 
     private RectTransform[] CreateCRTShutters()
     {
         //Generate output variable and clockwise directions array (from up)
-        RectTransform[] output = new RectTransform[1];
+        RectTransform[] output = new RectTransform[4];
 
         //Generating the game objects and their components
         for(int i = 0; i < output.Length; i++)
@@ -70,18 +77,24 @@ public class BootUp_Script : MonoBehaviour
             output[i] = go.GetComponent<RectTransform>();
 
             //TODO: position shutters correctly around the screen and 
-            ScaleRectToScreen(output[i], 1, 1);
+            ScaleAndMoveRect(output[i], 1, 1, clockwise[i]);
         }
-
-
-
         return output;
     }
 
-    private void ScaleRectToScreen(RectTransform input, float horizontalPercent, float verticalPercent)
+    [Button]
+    public void MoveDown()
+    {
+        foreach(var shutter in shutters)
+        {
+            shutter.position += Vector3.down;
+        }
+    }
+
+    private void ScaleAndMoveRect(RectTransform input, float horizontalPercent, float verticalPercent, Vector2 positioning)
     {
         input.localScale = Vector3.one;
-        Vector2 rectMiddle = new Vector2(0.5f, 1.5f);
+        Vector2 rectMiddle = new Vector2(0.5f, 0.5f) + positioning;
 
         input.sizeDelta = Vector2.zero; //Dont want any delta sizes, because that would defeat the point of anchors
         input.anchoredPosition = Vector2.zero; //And the position is set by the anchors aswell so we set the offset to 0

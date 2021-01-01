@@ -47,6 +47,9 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(playIntro());
         }
+
+        print(UnityEditorInternal.InternalEditorUtility.tags.Length + " tags!");
+
     }
 
 
@@ -64,14 +67,6 @@ public class GameManager : MonoBehaviour
             SceneManager.LoadScene(++currentSceneIndex);
         }
 
-    }
-
-    private void Update()
-    {
-        //if (Input.GetKeyDown(KeyCode.N))
-        //{
-        //    NextScene();
-        //}
     }
 
     public void Quit()

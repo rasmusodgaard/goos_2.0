@@ -6,14 +6,16 @@ using UnityEngine.SceneManagement;
 public class CreateScreenColliders : MonoBehaviour
 {
     Transform leftSide;
+    public float colZWidth = 8;
     public float colThickness = 2f;
     public float zPosition = 0f;
+    public LayerMask layer;
     private Vector2 screenSize;
     //If you need a 3D version, just remove 2D from the PhysicsMaterial2D.
     public PhysicMaterial physicsMaterial;
     void Start()
     {
-        if (SceneManager.GetActiveScene().name != "Desktop")
+        if(SceneManager.GetActiveScene().name != "Desktop")
         {
             leftSide = GameObject.FindWithTag("BorderLeft").transform;
         }
@@ -32,7 +34,7 @@ public class CreateScreenColliders : MonoBehaviour
         screenSize.x = Vector2.Distance(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)), Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, 0))) * 0.5f;
         screenSize.y = Vector2.Distance(Camera.main.ScreenToWorldPoint(new Vector2(0, 0)), Camera.main.ScreenToWorldPoint(new Vector2(0, Screen.height))) * 0.5f;
         //For each Transform/Object in our Dictionary
-        foreach (KeyValuePair<string, Transform> valPair in colliders)
+        foreach(KeyValuePair<string, Transform> valPair in colliders)
         {
             //Add our colliders. Remove the "2D", if you would like 3D colliders.
             valPair.Value.gameObject.AddComponent<BoxCollider>();
@@ -41,13 +43,14 @@ public class CreateScreenColliders : MonoBehaviour
             //Make the object a child of whatever object this script is on (preferably the camera)
             valPair.Value.parent = transform;
             //Scale the object to the width and height of the screen, using the world-space values calculated earlier
-            if (valPair.Key == "Left" || valPair.Key == "Right")
-                valPair.Value.localScale = new Vector3(colThickness, screenSize.y * 200, colThickness);
+            valPair.Value.gameObject.layer = layer;
+            if(valPair.Key == "Left" || valPair.Key == "Right")
+                valPair.Value.localScale = new Vector3(colThickness, screenSize.y * 200, colZWidth);
             else
-                valPair.Value.localScale = new Vector3(screenSize.x * 2, colThickness, colThickness);
+                valPair.Value.localScale = new Vector3(screenSize.x * 2, colThickness, colZWidth);
             //We add the Physicsmaterial to the collider here if there is any
             //Remove the 2D from BoxCollider2D if you are working with 3D
-            if (physicsMaterial)
+            if(physicsMaterial)
             {
                 valPair.Value.gameObject.GetComponent<BoxCollider>().sharedMaterial = physicsMaterial;
             }
@@ -61,10 +64,10 @@ public class CreateScreenColliders : MonoBehaviour
         colliders["Top"].position = new Vector3(cameraPos.x, cameraPos.y + screenSize.y * 99.6f + (colliders["Top"].localScale.y * 0.5f), zPosition);
         colliders["Bottom"].position = new Vector3(cameraPos.x, cameraPos.y - screenSize.y - (colliders["Bottom"].localScale.y * 0.5f), zPosition);
         //colliders["Top"].gameObject.SetActive(false);
-        if (leftSide != null)
+        if(leftSide != null)
         {
 
-            leftSide.position = new Vector3(colliders["Left"].position.x + (colThickness/2) - (leftSide.localScale.y/2),leftSide.position.y, leftSide.position.z);
+            leftSide.position = new Vector3(colliders["Left"].position.x + (colThickness / 2) - (leftSide.localScale.y / 2), leftSide.position.y, leftSide.position.z);
 
         }
     }

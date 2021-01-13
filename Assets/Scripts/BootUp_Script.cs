@@ -10,7 +10,7 @@ public class BootUp_Script : MonoBehaviour
 {
 
     ParticleSystem particle;
-    Transform canvasTransform;
+    public Transform buttonCanvas, shutterCanvas;
     Camera cam;
     RectTransform[] shutters;
     Vector2[] clockwise;
@@ -27,13 +27,17 @@ public class BootUp_Script : MonoBehaviour
 
     private void Awake()
     {
-        particle = GetComponentInChildren<ParticleSystem>();
-        canvasTransform = GetComponentInChildren<Canvas>().transform;
         cam = Camera.main;
         clockwise = new Vector2[]{
             Vector2.up, Vector2.right, Vector2.down, Vector2.left
         };
     }
+
+    private void Start()
+    {
+        shutters = CreateCRTShutters();
+    }
+
     public void BootUp()
     {
         //Loading particle modules
@@ -52,7 +56,6 @@ public class BootUp_Script : MonoBehaviour
         colorOverLifetime.color = pressedGradient;
 
         //  -CRT simulation
-        //shutters = CreateCRTShutters();
         //      -Horisontal cover to 1%
         //      -Vertical covers to 1%
         //      -Noget med blur/glow
@@ -69,7 +72,7 @@ public class BootUp_Script : MonoBehaviour
         {
             //Pre RectTransform
             GameObject go = new GameObject();
-            go.transform.parent = canvasTransform;
+            go.transform.parent = shutterCanvas;
 
             //RectTransform
             Image image = go.AddComponent<Image>();
@@ -83,7 +86,7 @@ public class BootUp_Script : MonoBehaviour
     }
 
     [Button]
-    public void MoveDown()
+    public void MoveDownTEST()
     {
         foreach(var shutter in shutters)
         {

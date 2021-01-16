@@ -12,6 +12,7 @@ public class SoundFX : MonoBehaviour
     public AudioClip button_ok;
     public AudioClip button_denied;
     public AudioClip screen_clap;
+    public AudioClip sand;
 
     AudioSource[] audioSources;
 
@@ -20,12 +21,17 @@ public class SoundFX : MonoBehaviour
         audioSources = GetComponents<AudioSource>();
     }
 
-    public void playSound(ref AudioClip sound)
+    public void playSound(ref AudioClip sound, float volume = 1, bool randomPitch = false)
     {
         audioSources[0].loop = false;
         audioSources[0].clip = sound;
-        audioSources[0].pitch = Random.Range(0.9f, 1.1f);
-        audioSources[0].volume = 0.8f;
+
+        if(randomPitch)
+        {
+            audioSources[0].pitch = Random.Range(0.9f, 1.1f);
+        }
+
+        audioSources[0].volume = volume;
         audioSources[0].Play();
     }
 

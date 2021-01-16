@@ -36,7 +36,6 @@ public class GameManager : MonoBehaviour
         username = "";
 
         lastSceneIndex = SceneManager.sceneCountInBuildSettings - 1;
-        print("Current: " + SceneManager.GetActiveScene().buildIndex + ". Last: " + lastSceneIndex);
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
@@ -47,9 +46,6 @@ public class GameManager : MonoBehaviour
         {
             StartCoroutine(playIntro());
         }
-
-        print(UnityEditorInternal.InternalEditorUtility.tags.Length + " tags!");
-
     }
 
 

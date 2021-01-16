@@ -92,7 +92,6 @@ public class DragJoint : MonoBehaviour
     {
         if(gameObject.GetComponent<HingeJoint>() != null)
         {
-            print("Break joint!");
             gameObject.GetComponent<HingeJoint>().breakForce = 0;
             gameObject.GetComponent<HingeJoint>().breakTorque = 0;
             gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(0, 0.0000001f, 0));

@@ -11,7 +11,6 @@ public class SandRespawner_Script : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        print(other.tag + " exited collider.");
         if(other.tag == "Sand" && gameObject.name == "Hourglass")
         {
             print("Pre-position: " + other.transform.position);

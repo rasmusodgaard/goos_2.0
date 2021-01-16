@@ -4,32 +4,19 @@ using UnityEngine;
 
 public class LoadingBar : MonoBehaviour
 {
-    public ClearScreen cs;
-    public HourClassCounter HGC;
 
+    private ClearScreen clearScreen;
     private bool changeScene;
 
     void Start()
     {
-        cs = FindObjectOfType<ClearScreen>();
-        HGC = FindObjectOfType<HourClassCounter>();
+        clearScreen = FindObjectOfType<ClearScreen>();
         changeScene = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Grow(float loadingScore)
     {
-        if (transform.localScale.x >= 18 && !changeScene)
-        {
-            //GameManager.instance.NextScene();
-            cs.moving = true;
-            changeScene = false;
-        }
-    }
-
-    public void Grow()
-    {
-        transform.localScale += new Vector3(HGC.loadingScore, 0f, 0f);
+        transform.localScale += new Vector3(loadingScore, 0f, 0f);
     }
 
 }

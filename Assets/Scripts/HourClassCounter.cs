@@ -17,10 +17,10 @@ public class HourClassCounter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Sand")
+        if(other.gameObject.tag == "Sand")
         {
             loadingScore += 0.002f * speed;
-            LB.Grow();
+            LB.Grow(loadingScore);
         }
     }
 

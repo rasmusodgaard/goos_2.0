@@ -11,12 +11,22 @@ public class SoundFX : MonoBehaviour
     public AudioClip explosion;
     public AudioClip button_ok;
     public AudioClip button_denied;
+    public AudioClip screen_clap;
 
     AudioSource[] audioSources;
 
     void Start()
     {
         audioSources = GetComponents<AudioSource>();
+    }
+
+    public void playSound(ref AudioClip sound)
+    {
+        audioSources[0].loop = false;
+        audioSources[0].clip = sound;
+        audioSources[0].pitch = Random.Range(0.9f, 1.1f);
+        audioSources[0].volume = 0.8f;
+        audioSources[0].Play();
     }
 
     public void playClick()

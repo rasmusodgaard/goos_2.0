@@ -452,3 +452,5 @@ MonoBehaviour:
   explosion: {fileID: 8300000, guid: b47734a6febda4f18b924ad4062a13d1, type: 3}
   button_ok: {fileID: 8300000, guid: 2ec570a62144b98429b691c700e18bbe, type: 3}
   button_denied: {fileID: 8300000, guid: 7b8602fb0fe1a05418beb504b7a49d45, type: 3}
+  screen_clap: {fileID: 8300000, guid: 4135a3faf196f20458d4ea03967cea60, type: 3}
+  sand: {fileID: 8300000, guid: 6a65dfbb529e40648a0993a74f66e3c7, type: 3}

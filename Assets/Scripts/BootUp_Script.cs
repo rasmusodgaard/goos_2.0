@@ -31,6 +31,7 @@ public class BootUp_Script : MonoBehaviour
         clockwise = new Vector2[]{
             Vector2.up, Vector2.right, Vector2.down, Vector2.left
         };
+        particle = GetComponentInChildren<ParticleSystem>();
     }
 
     private void Start()

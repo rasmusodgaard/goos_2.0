@@ -56,11 +56,11 @@ public class GameManager : MonoBehaviour
         int currentSceneIndex = SceneManager.GetActiveScene().buildIndex;
         if(currentSceneIndex >= lastSceneIndex)
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadSceneAsync(0);
         }
         else
         {
-            SceneManager.LoadScene(++currentSceneIndex);
+            SceneManager.LoadSceneAsync(++currentSceneIndex);
         }
 
     }

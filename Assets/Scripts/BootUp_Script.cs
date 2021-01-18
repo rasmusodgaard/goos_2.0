@@ -3,17 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using Sirenix.Serialization;
-using Sirenix.OdinInspector;
-using UnityEngine.UI;
+using System;
 
 public class BootUp_Script : MonoBehaviour
 {
 
     ParticleSystem particle;
-    public Transform buttonCanvas, shutterCanvas;
+    public Transform buttonCanvas;
     Camera cam;
-    RectTransform[] shutters;
-    Vector2[] clockwise;
 
     [Header("Values after pressed")]
     public float particleSpeed = 10;
@@ -24,19 +21,14 @@ public class BootUp_Script : MonoBehaviour
 
     [Header("CRT Shutters")]
     public Sprite shutterSprite;
+    public Color spriteColor;
+    private SpriteRenderer CRTShutter;
 
     private void Awake()
     {
         cam = Camera.main;
-        clockwise = new Vector2[]{
-            Vector2.up, Vector2.right, Vector2.down, Vector2.left
-        };
         particle = GetComponentInChildren<ParticleSystem>();
-    }
-
-    private void Start()
-    {
-        shutters = CreateCRTShutters();
+        CRTShutter = CreateCRTSprite();
     }
 
     public void BootUp()
@@ -46,6 +38,7 @@ public class BootUp_Script : MonoBehaviour
         var colorOverLifetime = particle.colorOverLifetime;
 
         //click sound played here
+
 
         //Boot animation:
         particle.Clear();
@@ -60,52 +53,29 @@ public class BootUp_Script : MonoBehaviour
         //      -Horisontal cover to 1%
         //      -Vertical covers to 1%
         //      -Noget med blur/glow
-        GameManager.instance.TimedQuit(5);
+        AnimateCRTShutter(CRTShutter);
     }
 
-    private RectTransform[] CreateCRTShutters()
+    private void AnimateCRTShutter(SpriteRenderer input)
     {
-        //Generate output variable and clockwise directions array (from up)
-        RectTransform[] output = new RectTransform[4];
+        Sequence sequence = DOTween.Sequence();
+        sequence.Append(input.DOFade(1, 0.05f).SetEase(Ease.InQuad))
+            .Append(input.transform.DOScaleX(53, 0.4f).SetEase(Ease.InQuad))
+            .Append(input.transform.DOScaleY(33, 0.4f).SetEase(Ease.InQuad))
+            .AppendCallback(GameManager.instance.NextScene)
+            .PrependInterval(2);
+    }
 
-        //Generating the game objects and their components
-        for(int i = 0; i < output.Length; i++)
-        {
-            //Pre RectTransform
-            GameObject go = new GameObject();
-            go.transform.parent = shutterCanvas;
+    private SpriteRenderer CreateCRTSprite()
+    {
+        GameObject go = new GameObject();
 
-            //RectTransform
-            Image image = go.AddComponent<Image>();
-            image.sprite = shutterSprite;
-            output[i] = go.GetComponent<RectTransform>();
+        //RectTransform
+        SpriteRenderer output = go.AddComponent<SpriteRenderer>();
+        output.color = spriteColor;
+        output.sprite = shutterSprite;
+        output.sortingOrder = 10;
 
-            //TODO: position shutters correctly around the screen and 
-            ScaleAndMoveRect(output[i], 1, 1, clockwise[i]);
-        }
         return output;
-    }
-
-    [Button]
-    public void MoveDownTEST()
-    {
-        foreach(var shutter in shutters)
-        {
-            shutter.position += Vector3.down;
-        }
-    }
-
-    private void ScaleAndMoveRect(RectTransform input, float horizontalPercent, float verticalPercent, Vector2 positioning)
-    {
-        input.localScale = Vector3.one;
-        Vector2 rectMiddle = new Vector2(0.5f, 0.5f) + positioning;
-
-        input.sizeDelta = Vector2.zero; //Dont want any delta sizes, because that would defeat the point of anchors
-        input.anchoredPosition = Vector2.zero; //And the position is set by the anchors aswell so we set the offset to 0
-
-        input.anchorMin = new Vector2(rectMiddle.x - horizontalPercent / 2,
-                                    rectMiddle.y - verticalPercent / 2);
-        input.anchorMax = new Vector2(rectMiddle.x + horizontalPercent / 2,
-                                    rectMiddle.y + verticalPercent / 2);
     }
 }

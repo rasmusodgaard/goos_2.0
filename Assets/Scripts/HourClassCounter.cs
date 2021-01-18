@@ -22,7 +22,7 @@ public class HourClassCounter : MonoBehaviour
     {
         if(other.gameObject.tag == "Sand")
         {
-            soundFX.playSound(ref soundFX.sand, 0.8f, true);
+            soundFX.playSound(ref soundFX.sand, 1.0f, true);
             loadingScore += 0.002f * speed;
             LB.Grow(loadingScore);
         }

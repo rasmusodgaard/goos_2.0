@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class IconSpriteSelector : MonoBehaviour
 {
-    public enum SpriteSelector {clock,calculator,music,mail,off};
+    public enum SpriteSelector { clock, calculator, music, mail, off };
     public SpriteSelector CurrentSprite;
 
     [Header("Sprite Arrays")]
@@ -20,29 +20,42 @@ public class IconSpriteSelector : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        print("EnumConversion: "+ (int)CurrentSprite);
+        print("EnumConversion: " + (int)CurrentSprite);
     }
 
     void Update()
     {
-        if (mouseOver) { spriteRenderer.sprite = selSprites[(int)CurrentSprite]; }
-        else if(!mouseOver && !holding) { spriteRenderer.sprite = sprites[(int)CurrentSprite]; }
+        if(mouseOver)
+        {
+            spriteRenderer.sprite = selSprites[(int)CurrentSprite];
+        }
+        else if(!mouseOver && !holding)
+        {
+            spriteRenderer.sprite = sprites[(int)CurrentSprite];
+        }
 
-        if (Input.GetMouseButtonUp(0)) { holding = false; }
+        if(Input.GetMouseButtonUp(0))
+        {
+            holding = false;
+        }
     }
 
     void OnMouseOver()
     {
         mouseOver = true;
-        if (Input.GetMouseButton(0)) { holding = true; }
+        if(Input.GetMouseButton(0))
+        {
+            holding = true;
+        }
     }
 
-     void OnMouseExit()
+    void OnMouseExit()
     {
         mouseOver = false;
     }
 
-    public int GetSpriteInt() {
+    public int GetSpriteInt()
+    {
         return (int)CurrentSprite;
     }
 

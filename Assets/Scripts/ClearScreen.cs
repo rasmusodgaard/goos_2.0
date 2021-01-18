@@ -21,10 +21,6 @@ public class ClearScreen : MonoBehaviour
 
     void Update()
     {
-        if(moving && !changeScene)
-        {
-
-        }
         if(transform.position.x < leftCollider.position.x && !changeScene)
         {
             print("Changescene");
@@ -35,12 +31,12 @@ public class ClearScreen : MonoBehaviour
     public void StartClearScreen()
     {
         moving = true;
+        StartCoroutine(ScreenWipe());
     }
     private void OnTriggerEnter(Collider other)
     {
         if(!moving)
         {
-            StartCoroutine(ScreenWipe());
             StartClearScreen();
         }
     }
@@ -48,7 +44,7 @@ public class ClearScreen : MonoBehaviour
     IEnumerator ScreenWipe()
     {
         particle.Play();
-        soundFX.playSound(ref soundFX.screen_clap);
+        soundFX.playSound(ref soundFX.screen_clap, 0.8f);
         yield return new WaitForSeconds(particle.main.duration);
         while(transform.position.x > leftCollider.position.x)
         {

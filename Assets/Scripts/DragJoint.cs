@@ -116,7 +116,6 @@ public class DragJoint : MonoBehaviour
         {
             if(hit.collider.tag == "CloseButton")
             {
-                print("CLICKING BUTTON");
                 button.resizing = true;
             }
         }

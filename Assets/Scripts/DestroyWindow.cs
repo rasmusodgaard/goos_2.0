@@ -9,7 +9,7 @@ public class DestroyWindow : MonoBehaviour
     public float xSize;
 
     public float smoothTime = 0.3f;
-    public float velocity = 0f; 
+    public float velocity = 0f;
 
     public bool resizing = false;
 
@@ -28,37 +28,42 @@ public class DestroyWindow : MonoBehaviour
 
     void Update()
     {
-        if (resizing){
+        if(resizing)
+        {
 
             ResizeUp();
 
-        } else if(!resizing) {
+        }
+        else if(!resizing)
+        {
             ResizeDown();
         }
 
         parent.localScale = new Vector3(xSize, parent.localScale.y, parent.localScale.z);
 
-        if(xSize > maxSize - 0.004f){
+        if(xSize > maxSize - 0.004f)
+        {
             GameManager.instance.GetComponent<SoundFX>().playExplosion();
             transform.parent.parent.GetComponent<Explosion>().Explode();
         }
 
     }
 
-    void ResizeUp(){
-        if(!isplaying) 
+    void ResizeUp()
+    {
+        if(!isplaying)
         {
-            print("By sound");
             GameManager.instance.GetComponent<SoundFX>().playFuse();
-            isplaying = true;    
+            isplaying = true;
         }
         xSize = Mathf.SmoothDamp(xSize, maxSize, ref velocity, smoothTime);
     }
 
-    void ResizeDown(){
+    void ResizeDown()
+    {
         GameManager.instance.GetComponent<SoundFX>().stopFuse();
         isplaying = false;
         xSize = Mathf.SmoothDamp(xSize, minSize, ref velocity, smoothTime);
-        
+
     }
 }

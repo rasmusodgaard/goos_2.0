@@ -13,6 +13,7 @@ public class VolumeSliderScript : MonoBehaviour
     {
         audio = GameObject.FindWithTag("MusicPlayer").GetComponent<AudioSource>();
         print("Distance: " + Vector3.Distance(min.position, max.position));
+        audio.Play();
     }
 
     // Update is called once per frame

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum SpriteSelector { clock, calculator, music, mail, off };
 public class IconSpriteSelector : MonoBehaviour
 {
-    public enum SpriteSelector { clock, calculator, music, mail, off };
     public SpriteSelector CurrentSprite;
 
     [Header("Sprite Arrays")]
@@ -20,7 +20,6 @@ public class IconSpriteSelector : MonoBehaviour
     void Start()
     {
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        print("EnumConversion: " + (int)CurrentSprite);
     }
 
     void Update()

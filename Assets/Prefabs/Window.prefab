@@ -27,7 +27,7 @@ RectTransform:
   m_GameObject: {fileID: 960083733219955349}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 6600372895314076485}
   m_RootOrder: 0
@@ -65,7 +65,8 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_text: New Text
+  m_text: If I have ever made any valuable discoveries, it has been due more to patient
+    attention, than to any other talent.
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -93,8 +94,8 @@ MonoBehaviour:
   m_outlineColor:
     serializedVersion: 2
     rgba: 4278190080
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -104,7 +105,7 @@ MonoBehaviour:
   m_isAlignmentEnumConverted: 1
   m_characterSpacing: 0
   m_wordSpacing: 0
-  m_lineSpacing: 0
+  m_lineSpacing: 5.08
   m_lineSpacingMax: 0
   m_paragraphSpacing: 0
   m_charWidthMaxAdj: 0
@@ -131,15 +132,15 @@ MonoBehaviour:
   m_firstVisibleCharacter: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 71.060486, y: 10.09864, z: 69.00309, w: 10.352976}
+  m_margin: {x: 38.156723, y: -5.45425, z: 34.12108, w: -4.7892766}
   m_textInfo:
     textComponent: {fileID: 469920329229065404}
-    characterCount: 8
+    characterCount: 114
     spriteCount: 0
-    spaceCount: 1
-    wordCount: 2
+    spaceCount: 20
+    wordCount: 21
     linkCount: 0
-    lineCount: 1
+    lineCount: 5
     pageCount: 1
     materialCount: 1
   m_havePropertiesChanged: 0
@@ -188,7 +189,7 @@ RectTransform:
   m_GameObject: {fileID: 2374128348240794173}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.01539252, y: 0.0269974, z: 1}
+  m_LocalScale: {x: 0.07142855, y: 0.13513514, z: 1}
   m_Children:
   - {fileID: 8882393827112472471}
   m_Father: {fileID: 6994059433982686896}

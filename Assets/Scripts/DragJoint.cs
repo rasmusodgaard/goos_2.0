@@ -21,25 +21,27 @@ public class DragJoint : MonoBehaviour
     Vector3 delta = Vector3.zero;
     private Vector3 lastPos = Vector3.zero;
 
-
-    void Start()
+    private void Awake()
     {
         pos = gameObject.transform.position;
         rb = gameObject.GetComponent<Rigidbody>();
         mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         mousePositions = new Queue<Vector3>();
         button = GetComponentInChildren<DestroyWindow>();
+        joint = GameObject.FindWithTag("Joint");
+    }
 
+    void Start()
+    {
         for(int i = 0; i < mousePosSize; i++)
         {
             mousePositions.Enqueue(Vector3.one);
         }
-
-        joint = GameObject.FindWithTag("Joint");
     }
 
     void Update()
     {
+
         mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         UpdatePositions();
         joint.transform.position = new Vector3(mpos.x, mpos.y, 0);

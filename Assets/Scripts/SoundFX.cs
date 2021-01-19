@@ -13,6 +13,8 @@ public class SoundFX : MonoBehaviour
     public AudioClip button_denied;
     public AudioClip screen_clap;
     public AudioClip sand;
+    public AudioClip boot_up;
+    public AudioClip pre_boot;
 
     AudioSource[] audioSources;
 

@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CursorSprite : MonoBehaviour
 {
@@ -31,23 +29,40 @@ public class CursorSprite : MonoBehaviour
         mpos = new Vector3(mpos.x, mpos.y, -1);
         t.position = mpos;
 
-        if (!over) { spriteRenderer.sprite = normalCursor; }
-        else { spriteRenderer.sprite = dragCursor; }
+        if(!over)
+        {
+            spriteRenderer.sprite = normalCursor;
+        }
+        else
+        {
+            spriteRenderer.sprite = dragCursor;
+        }
 
         RayCasting();
     }
 
-    void RayCasting(){
+    void RayCasting()
+    {
         ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out hit))
+        if(Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.tag == "Icon" || hit.collider.tag == "Window" || hit.collider.tag == "VolumeSlider") { over = true; }
-            else if(over && hit.collider.tag == "Background" && !holding){
+            if(hit.collider.tag == "Icon" || hit.collider.tag == "Window" || hit.collider.tag == "VolumeSlider")
+            {
+                over = true;
+            }
+            else if(over && hit.collider.tag == "Background" && !holding)
+            {
                 over = false;
             }
         }
 
-        if (over & Input.GetMouseButtonDown(0)) { holding = true; }
-        if (Input.GetMouseButtonUp(0)) { holding = false; }
+        if(over & Input.GetMouseButtonDown(0))
+        {
+            holding = true;
+        }
+        if(Input.GetMouseButtonUp(0))
+        {
+            holding = false;
+        }
     }
 }

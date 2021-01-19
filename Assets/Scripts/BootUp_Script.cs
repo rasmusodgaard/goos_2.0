@@ -58,12 +58,16 @@ public class BootUp_Script : MonoBehaviour
 
     private void AnimateCRTShutter(SpriteRenderer input)
     {
+        SoundFX soundFX = GameManager.instance.GetComponent<SoundFX>();
+        soundFX.PlayButtonClick(true);
+        soundFX.playSound(ref soundFX.pre_boot);
         Sequence sequence = DOTween.Sequence();
-        sequence.Append(input.DOFade(1, 0.05f).SetEase(Ease.InQuad))
+        sequence.AppendCallback(() => soundFX.playSound(ref soundFX.boot_up, 0.7f))
+            .Append(input.DOFade(1, 0.05f).SetEase(Ease.InQuad))
             .Append(input.transform.DOScaleX(53, 0.4f).SetEase(Ease.InQuad))
             .Append(input.transform.DOScaleY(33, 0.4f).SetEase(Ease.InQuad))
             .AppendCallback(GameManager.instance.NextScene)
-            .PrependInterval(2);
+            .PrependInterval(soundFX.pre_boot.length);
     }
 
     private SpriteRenderer CreateCRTSprite()

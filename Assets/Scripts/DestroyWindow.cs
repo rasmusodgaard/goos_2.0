@@ -61,8 +61,11 @@ public class DestroyWindow : MonoBehaviour
 
     void ResizeDown()
     {
-        GameManager.instance.GetComponent<SoundFX>().stopFuse();
-        isplaying = false;
+        if(isplaying)
+        {
+            GameManager.instance.GetComponent<SoundFX>().stopFuse();
+            isplaying = false;
+        }
         xSize = Mathf.SmoothDamp(xSize, minSize, ref velocity, smoothTime);
 
     }

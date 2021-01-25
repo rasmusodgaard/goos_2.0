@@ -18,6 +18,8 @@ public class SoundFX : MonoBehaviour
 
     AudioSource[] audioSources;
 
+    AudioSource lastFuseSource;
+
     void Start()
     {
         audioSources = GetComponents<AudioSource>();
@@ -25,72 +27,92 @@ public class SoundFX : MonoBehaviour
 
     public void playSound(ref AudioClip sound, float volume = 1, bool randomPitch = false)
     {
-        audioSources[0].loop = false;
-        audioSources[0].clip = sound;
+        AudioSource source = GetAvailableAudioSource();
+        source.loop = false;
+        source.clip = sound;
 
         if(randomPitch)
         {
-            audioSources[0].pitch = Random.Range(0.9f, 1.1f);
+            source.pitch = Random.Range(0.9f, 1.1f);
         }
 
-        audioSources[0].volume = volume;
-        audioSources[0].Play();
+        source.volume = volume;
+        source.Play();
     }
 
     public void playClick()
     {
-        audioSources[0].loop = false;
-        audioSources[0].clip = click;
-        audioSources[0].pitch = Random.Range(0.9f, 1.1f);
-        audioSources[0].volume = 1;
-        audioSources[0].Play();
+        AudioSource source = GetAvailableAudioSource();
+        source.loop = false;
+        source.clip = click;
+        source.pitch = Random.Range(0.9f, 1.1f);
+        source.volume = 1;
+        source.Play();
     }
 
     public void playIntro()
     {
-        audioSources[1].loop = false;
-        audioSources[1].clip = intro;
-        audioSources[1].volume = 1;
-        audioSources[1].Play();
+        AudioSource source = GetAvailableAudioSource();
+        source.loop = false;
+        source.clip = intro;
+        source.volume = 1;
+        source.Play();
     }
 
     public void playOutro()
     {
-        audioSources[1].loop = false;
-        audioSources[1].clip = outro;
-        audioSources[1].volume = 1;
-        audioSources[1].Play();
+        AudioSource source = GetAvailableAudioSource();
+        source.loop = false;
+        source.clip = outro;
+        source.volume = 1;
+        source.Play();
     }
 
     public void playFuse()
     {
-        audioSources[2].loop = false;
-        audioSources[2].clip = fuse;
-        audioSources[2].volume = 1;
-        audioSources[2].Play();
+        AudioSource source = GetAvailableAudioSource();
+        lastFuseSource = source;
+        source.loop = false;
+        source.clip = fuse;
+        source.volume = 1;
+        source.Play();
     }
 
     public void stopFuse()
     {
-        audioSources[2].Stop();
+        lastFuseSource.Stop();
     }
 
     public void playExplosion()
     {
-        audioSources[3].loop = false;
-        audioSources[3].pitch = Random.Range(0.9f, 1.1f);
-        audioSources[3].clip = explosion;
-        audioSources[3].volume = 1;
-        audioSources[3].Play();
+        AudioSource source = GetAvailableAudioSource();
+        source.loop = false;
+        source.pitch = Random.Range(0.9f, 1.1f);
+        source.clip = explosion;
+        source.volume = 1;
+        source.Play();
     }
 
     public void PlayButtonClick(bool activation)
     {
-        audioSources[0].loop = false;
-        audioSources[0].clip = (activation) ? button_ok : button_denied;
-        audioSources[0].pitch = Random.Range(0.9f, 2.1f);
-        audioSources[0].volume = 1;
-        audioSources[0].Play();
+        AudioSource source = GetAvailableAudioSource();
+        source.loop = false;
+        source.clip = (activation) ? button_ok : button_denied;
+        source.pitch = Random.Range(0.9f, 2.1f);
+        source.volume = 1;
+        source.Play();
+    }
+
+    private AudioSource GetAvailableAudioSource()
+    {
+        foreach(AudioSource source in audioSources)
+        {
+            if(!source.isPlaying && source != audioSources[0])
+            {
+                return source;
+            }
+        }
+        return audioSources[0];
     }
 
 

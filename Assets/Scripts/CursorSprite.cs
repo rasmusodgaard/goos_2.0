@@ -26,7 +26,7 @@ public class CursorSprite : MonoBehaviour
     void Update()
     {
         mpos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mpos = new Vector3(mpos.x, mpos.y, -1);
+        mpos = new Vector3(mpos.x, mpos.y, 0);
         t.position = mpos;
 
         if(!over)

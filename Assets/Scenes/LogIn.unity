@@ -21250,17 +21250,17 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 6977532503521530953, guid: f9599a86e4c1f9d4f968668676037a4f,
-        type: 3}
-      propertyPath: m_SortingOrder
-      value: -1
-      objectReference: {fileID: 0}
     - target: {fileID: 4889096619552300369, guid: f9599a86e4c1f9d4f968668676037a4f,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: ebc5141c0aa6946699f5992b2ad027c8,
         type: 2}
+    - target: {fileID: 6977532503521530953, guid: f9599a86e4c1f9d4f968668676037a4f,
+        type: 3}
+      propertyPath: m_SortingOrder
+      value: -1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
 --- !u!4 &1472747908 stripped
@@ -22949,7 +22949,7 @@ MonoBehaviour:
   ease: 30
   speed: 3
   textFinal: Loading...
-  loginText: Log In
+  loginText: Login
   looping: 0
 --- !u!114 &1640670503
 MonoBehaviour:
@@ -24682,16 +24682,16 @@ PrefabInstance:
       propertyPath: m_Drag
       value: 0.1
       objectReference: {fileID: 0}
-    - target: {fileID: 1465671598, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
-      propertyPath: clearingScreen
-      value: 
-      objectReference: {fileID: 106382620}
     - target: {fileID: 4889096619552300369, guid: f9599a86e4c1f9d4f968668676037a4f,
         type: 3}
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 13400000, guid: ebc5141c0aa6946699f5992b2ad027c8,
         type: 2}
+    - target: {fileID: 1465671598, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
+      propertyPath: clearingScreen
+      value: 
+      objectReference: {fileID: 106382620}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9599a86e4c1f9d4f968668676037a4f, type: 3}
 --- !u!4 &1764489385 stripped

@@ -67,7 +67,7 @@ public class BootUp_Script : MonoBehaviour
             .Append(input.transform.DOScaleX(53, 0.4f).SetEase(Ease.InQuad))
             .Append(input.transform.DOScaleY(33, 0.4f).SetEase(Ease.InQuad))
             .AppendCallback(GameManager.instance.NextScene)
-            .PrependInterval(soundFX.pre_boot.length);
+            .PrependInterval(soundFX.pre_boot.length - 1);
     }
 
     private SpriteRenderer CreateCRTSprite()

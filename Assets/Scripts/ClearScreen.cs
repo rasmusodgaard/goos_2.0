@@ -12,11 +12,26 @@ public class ClearScreen : MonoBehaviour
     private bool changeScene;
     private SoundFX soundFX;
 
+    private Camera cam;
+    private Renderer renderer, leftRenderer;
+    private float screenMaxX, screenMinX;
+
     private void Start()
     {
-        changeScene = false;
         leftCollider = GameObject.FindWithTag("BorderLeft").transform;
+        cam = Camera.main;
+        renderer = GetComponent<Renderer>();
+        leftRenderer = leftCollider.GetComponent<Renderer>();
+
+        screenMinX = cam.ViewportToWorldPoint(Vector3.zero).x;
+        screenMaxX = cam.ViewportToWorldPoint(Vector3.right).x;
+
+        changeScene = false;
         soundFX = GameManager.instance.GetComponent<SoundFX>();
+
+        print("Screen min X" + screenMinX);
+        transform.position = new Vector3(screenMaxX + renderer.bounds.extents.x, transform.position.y, transform.position.z);
+        leftCollider.position = new Vector3(screenMinX - leftRenderer.bounds.extents.x, leftCollider.position.y, leftCollider.position.z);
     }
 
     void Update()

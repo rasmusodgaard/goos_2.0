@@ -199,7 +199,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 106382615}
   m_LocalRotation: {x: -0, y: -0, z: -0.70710576, w: 0.7071079}
-  m_LocalPosition: {x: 8.3, y: 0, z: 0}
+  m_LocalPosition: {x: 8.9, y: 0, z: 0}
   m_LocalScale: {x: 13, y: 0.42109352, z: 10.164}
   m_Children:
   - {fileID: 425350518}
@@ -2624,6 +2624,8 @@ MonoBehaviour:
   ease: 30
   speed: 3
   textFinal: Loading...
+  loginText: Please Log In To GoOS
+  looping: 1
 --- !u!1 &736210919
 GameObject:
   m_ObjectHideFlags: 0

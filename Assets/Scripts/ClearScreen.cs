@@ -59,7 +59,7 @@ public class ClearScreen : MonoBehaviour
     IEnumerator ScreenWipe()
     {
         particle.Play();
-        soundFX.playSound(ref soundFX.screen_clap, 0.8f);
+        soundFX.playSound(ref soundFX.screen_clap, 0.6f);
         yield return new WaitForSeconds(particle.main.duration);
         while(transform.position.x > leftCollider.position.x)
         {

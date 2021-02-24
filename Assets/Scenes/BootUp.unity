@@ -5541,7 +5541,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -5605,9 +5605,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a9db8707fb006a4cbb3bbddcedcf637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  duration: 1
-  offset: 10
-  easeFunction: 2
+  hoverDuration: 1
+  hoverOffset: 10
+  hoverEaseFunction: 3
+  fadeDuration: 2
+  fadeEaseFunction: 1
 --- !u!1 &2037948036
 GameObject:
   m_ObjectHideFlags: 0

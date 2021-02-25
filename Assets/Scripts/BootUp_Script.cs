@@ -73,7 +73,7 @@ public class BootUp_Script : MonoBehaviour
     private SpriteRenderer CreateCRTSprite()
     {
         GameObject go = new GameObject();
-
+        go.name = "CRT Shutter";
         //RectTransform
         SpriteRenderer output = go.AddComponent<SpriteRenderer>();
         output.color = spriteColor;

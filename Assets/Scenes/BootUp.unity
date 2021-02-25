@@ -5607,9 +5607,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hoverDuration: 1
   hoverOffset: 10
-  hoverEaseFunction: 3
-  fadeDuration: 2
-  fadeEaseFunction: 1
+  hoverEaseFunction: 18
+  fadeDuration: 5
+  fadeEaseFunction: 9
 --- !u!1 &2037948036
 GameObject:
   m_ObjectHideFlags: 0

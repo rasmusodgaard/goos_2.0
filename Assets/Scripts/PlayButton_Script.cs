@@ -1,16 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
-using System;
 
 public class PlayButton_Script : MonoBehaviour
 {
     private TextMeshProUGUI text;
-    private Image panel;
     private bool clicked = false;
+    private GraphicRaycaster raycaster;
+
+
+    public BootUp_Script bootUp_Script;
 
     [Header("Text Hover Options")]
     public float hoverDuration = 1;
@@ -26,7 +26,7 @@ public class PlayButton_Script : MonoBehaviour
     private void Start()
     {
         text = GetComponentInChildren<TextMeshProUGUI>();
-        panel = GetComponentInChildren<Image>();
+        raycaster = GetComponent<GraphicRaycaster>();
         HoverText(true);
     }
 
@@ -50,8 +50,9 @@ public class PlayButton_Script : MonoBehaviour
     private void FadeOutPlayButton()
     {
         clicked = true;
-        Sequence fadeOut = DOTween.Sequence();
-        fadeOut.Append(panel.DOFade(0, fadeDuration))
-               .Join(text.DOFade(0, fadeDuration)).OnComplete(() => this.gameObject.SetActive(false));
+        Sequence fadeOutSequence = DOTween.Sequence();
+        fadeOutSequence.Append(text.DOFade(0, fadeDuration))
+               .InsertCallback(fadeDuration - 0.1f, () => bootUp_Script.FadeIn())
+               .OnComplete(() => raycaster.enabled = false);
     }
 }

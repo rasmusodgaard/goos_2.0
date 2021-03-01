@@ -1,16 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using DG.Tweening;
 using Sirenix.Serialization;
-using System;
+using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 public class BootUp_Script : MonoBehaviour
 {
 
     ParticleSystem particle;
-    public Transform buttonCanvas;
     Camera cam;
+    Image[] buttonImages;
+    Button powerButton;
+
+    public Transform buttonCanvas;
+
+    [Header("Fade In settings")]
+    public float fadeDuration = 1;
+    public Ease fadeEase;
 
     [Header("Values after pressed")]
     public float particleSpeed = 10;
@@ -29,6 +35,23 @@ public class BootUp_Script : MonoBehaviour
         cam = Camera.main;
         particle = GetComponentInChildren<ParticleSystem>();
         CRTShutter = CreateCRTSprite();
+        buttonImages = buttonCanvas.GetComponentsInChildren<Image>();
+        powerButton = buttonCanvas.GetComponentInChildren<Button>();
+
+        for(int i = 0; i < buttonImages.Length; i++)
+        {
+            buttonImages[i].color = new Color(buttonImages[i].color.r, buttonImages[i].color.g, buttonImages[i].color.b, 0);
+        }
+    }
+
+    public void FadeIn()
+    {
+        particle.Play();
+        Sequence fadeInSequence = DOTween.Sequence();
+        fadeInSequence.SetEase(fadeEase)
+            .Append(buttonImages[0].DOFade(1, fadeDuration))
+            .Join(buttonImages[1].DOFade(1, fadeDuration))
+            .OnComplete(() => powerButton.interactable = true);
     }
 
     public void BootUp()

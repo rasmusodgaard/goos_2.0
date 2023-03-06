@@ -1,8 +1,7 @@
-﻿using UnityEngine;
-using DG.Tweening;
+﻿using DG.Tweening;
 using Sirenix.Serialization;
+using UnityEngine;
 using UnityEngine.UI;
-using Sirenix.OdinInspector;
 
 public class BootUp_Script : MonoBehaviour
 {
@@ -28,7 +27,9 @@ public class BootUp_Script : MonoBehaviour
     [Header("CRT Shutters")]
     public Sprite shutterSprite;
     public Color spriteColor;
+
     private SpriteRenderer CRTShutter;
+    private Sequence bootSequence = null;
 
     private void Awake()
     {
@@ -38,7 +39,7 @@ public class BootUp_Script : MonoBehaviour
         buttonImages = buttonCanvas.GetComponentsInChildren<Image>();
         powerButton = buttonCanvas.GetComponentInChildren<Button>();
 
-        for(int i = 0; i < buttonImages.Length; i++)
+        for (int i = 0; i < buttonImages.Length; i++)
         {
             buttonImages[i].color = new Color(buttonImages[i].color.r, buttonImages[i].color.g, buttonImages[i].color.b, 0);
         }
@@ -54,28 +55,29 @@ public class BootUp_Script : MonoBehaviour
             .OnComplete(() => powerButton.interactable = true);
     }
 
+    /// <summary>
+    /// Function called by the power button when pressed.
+    /// <para>Assigned in Editor.</para>
+    /// </summary>
     public void BootUp()
     {
+        if (bootSequence != null)
+        {
+            return;
+        }
+
         //Loading particle modules
         var main = particle.main;
         var colorOverLifetime = particle.colorOverLifetime;
 
-        //click sound played here
 
-
-        //Boot animation:
         particle.Clear();
-        //Particle system
         main.startLifetime = 10;
         main.simulationSpeed = 10;
         main.maxParticles = 30;
 
         colorOverLifetime.color = pressedGradient;
 
-        //  -CRT simulation
-        //      -Horisontal cover to 1%
-        //      -Vertical covers to 1%
-        //      -Noget med blur/glow
         AnimateCRTShutter(CRTShutter);
     }
 
@@ -84,20 +86,20 @@ public class BootUp_Script : MonoBehaviour
         SoundFX soundFX = GameManager.instance.GetComponent<SoundFX>();
         soundFX.PlayButtonClick(true);
         soundFX.playSound(ref soundFX.pre_boot);
-        Sequence sequence = DOTween.Sequence();
-        sequence.AppendCallback(() => soundFX.playSound(ref soundFX.boot_up, 0.7f))
+        bootSequence = DOTween.Sequence();
+        bootSequence
+            .PrependInterval(soundFX.pre_boot.length - 1)
+            .AppendCallback(() => soundFX.playSound(ref soundFX.boot_up, 0.7f))
             .Append(input.DOFade(1, 0.05f).SetEase(Ease.InQuad))
             .Append(input.transform.DOScaleX(53, 0.4f).SetEase(Ease.InQuad))
             .Append(input.transform.DOScaleY(33, 0.4f).SetEase(Ease.InQuad))
-            .AppendCallback(GameManager.instance.NextScene)
-            .PrependInterval(soundFX.pre_boot.length - 1);
+            .AppendCallback(GameManager.instance.NextScene);
     }
 
     private SpriteRenderer CreateCRTSprite()
     {
         GameObject go = new GameObject();
         go.name = "CRT Shutter";
-        //RectTransform
         SpriteRenderer output = go.AddComponent<SpriteRenderer>();
         output.color = spriteColor;
         output.sprite = shutterSprite;

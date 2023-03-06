@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ClearScreen : MonoBehaviour
@@ -8,13 +7,15 @@ public class ClearScreen : MonoBehaviour
     public ParticleSystem particle;
 
     Transform leftCollider, rightCollider;
-    public bool moving = false;
+    private bool isMoving = false;
     private bool changeScene;
     private SoundFX soundFX;
 
     private Camera cam;
     private Renderer renderer, leftRenderer;
     private float screenMaxX, screenMinX;
+
+    public bool IsMoving => isMoving;
 
     private void Start()
     {
@@ -36,7 +37,7 @@ public class ClearScreen : MonoBehaviour
 
     void Update()
     {
-        if(transform.position.x < leftCollider.position.x && !changeScene)
+        if (transform.position.x < leftCollider.position.x && !changeScene)
         {
             print("Changescene");
             changeScene = true;
@@ -45,12 +46,12 @@ public class ClearScreen : MonoBehaviour
 
     public void StartClearScreen()
     {
-        moving = true;
+        isMoving = true;
         StartCoroutine(ScreenWipe());
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(!moving)
+        if (!isMoving)
         {
             StartClearScreen();
         }
@@ -61,7 +62,7 @@ public class ClearScreen : MonoBehaviour
         particle.Play();
         soundFX.playSound(ref soundFX.screen_clap, 0.6f);
         yield return new WaitForSeconds(particle.main.duration);
-        while(transform.position.x > leftCollider.position.x)
+        while (transform.position.x > leftCollider.position.x)
         {
             gameObject.transform.Translate(Vector3.down * Time.deltaTime * speed);
             yield return null;

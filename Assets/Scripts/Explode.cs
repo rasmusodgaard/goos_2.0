@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Explode : MonoBehaviour
 {
@@ -17,7 +15,7 @@ public class Explode : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (clearingScreen.moving)
+        if (clearingScreen.IsMoving)
         {
             if (collision.gameObject.CompareTag("BorderLeft"))
             {
@@ -26,7 +24,7 @@ public class Explode : MonoBehaviour
                 Destroy(this.gameObject);
                 Destroy(Effect, 2f);
             }
-           
+
         }
     }
 

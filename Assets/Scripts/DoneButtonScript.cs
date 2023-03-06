@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class DoneButtonScript : MonoBehaviour
 {
@@ -22,21 +20,9 @@ public class DoneButtonScript : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            // clicked++;
-            // if (clicked == 1) clicktime = Time.time;
-
-            // if (clicked > 1 && Time.time - clicktime < clickdelay)
-            // {
-            //     GameManager.instance.GetComponent<SoundFX>().playClick();
-            //     clicked = 0;
-            //     clicktime = 0;
-            //     InitiateDone();
-
-            // }
-            // else if (clicked > 2 || Time.time - clicktime > 1) clicked = 0;
             bool activation = (usernamescript.GetLettersLength() > 0) ? true : false;
             GameManager.instance.GetComponent<SoundFX>().PlayButtonClick(activation);
-            if (activation)
+            if (activation && clear.IsMoving == false)
             {
                 InitiateDone();
             }
